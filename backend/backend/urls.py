@@ -20,6 +20,10 @@ import company_show.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', company_show.views.index_page, name='index'),
-    path('get_company_list/',company_show.views.get_company_list),
+    path('get_company_list/', company_show.views.get_company_list),
     path('', company_show.views.index_page, name='home'),
+    path('user_test/', company_show.views.user_test),
+    path('login/', company_show.views.log_in),
+    path('new_user/', company_show.views.new_user),
+    path("log_out", company_show.views.log_out),
 ]

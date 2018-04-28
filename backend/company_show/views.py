@@ -3,6 +3,8 @@ from django.shortcuts import HttpResponse
 import json
 import pymysql
 from django.shortcuts import redirect
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
@@ -16,6 +18,45 @@ one_page = 50
 
 def index_page(request):
     return redirect('/AlpacaCapital-fe/index.html')
+
+
+def log_in(request):
+    if request.method is "POST":
+        email = request.POST.get("email","")
+        passwd = request.POST.get("password","")
+        login_user = authenticate(username=email, password=passwd)
+        if login_user is not None:
+            if login_user.isactive:
+                request.session.set_expiry(86400)
+                login(request, login_user)
+                return HttpResponse("OK")
+    return HttpResponse("FAIL")
+
+
+def log_out(request):
+    try:
+        logout(request)
+        return HttpResponse("OK")
+    except Exception:
+        return HttpResponse("FAIL")
+
+
+def new_user(request):
+    if request.method is "POST":
+        email = request.POST.get("email", "")
+        passwd = request.POST.get("password", "")
+        new_created_user = User.objects.create_user()
+        if new_created_user is not None:
+            return HttpResponse("OK")
+        else:
+            return HttpResponse("FAIL")
+
+
+def user_test(request):
+    if request.user.is_authenticated():
+        HttpResponse("OK")
+    else:
+        HttpResponse("FAIL")
 
 
 def get_company_list(request):

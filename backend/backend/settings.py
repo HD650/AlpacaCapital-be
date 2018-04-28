@@ -51,6 +51,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'backend.urls'
 
+LOGIN_REQUIRED_URLS = (
+    r'/index/',
+    r'/get_company_list/',
+)
+
+LOGIN_URL = r'/login/'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -122,3 +129,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "company_show//static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 STATIC_URL = '/AlpacaCapital-fe/'
+
+LOGIN_REDIRECT_URL = '/'
