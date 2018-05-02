@@ -1,4 +1,6 @@
-# AlpacaCapital-be
+# AlpacaCapital-be   
+To deploy, install python3.5,mysql,django.   
+Then disable firewall on the linux server and setup a endpoint for azure load blance.   
 ## get_company_list   
 * describe: api to get companies brief   
 * url: /get_company_list/   
