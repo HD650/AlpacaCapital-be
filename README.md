@@ -1,6 +1,6 @@
 # AlpacaCapital-be   
-To deploy, install python3.5,mysql,django.   
-Then disable firewall on the linux server and setup a endpoint for azure load blance.   
+To deploy, install python3.5,mysql5.7,django.   
+Disable firewall on the linux server, setup an endpoint for azure load blance and fill the database.conf file.   
 ## get_company_list   
 * describe: api to get companies brief   
 * url: /get_company_list/   
