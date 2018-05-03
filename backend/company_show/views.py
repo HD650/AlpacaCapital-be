@@ -14,12 +14,12 @@ def index_page(request):
 
 
 def log_in(request):
-    if request.method is "POST":
+    if request.method == "POST":
         email = request.POST.get("email", "")
         passwd = request.POST.get("password", "")
         login_user = authenticate(username=email, password=passwd)
         if login_user is not None:
-            if login_user.isactive:
+            if login_user.is_active:
                 request.session.set_expiry(86400)
                 login(request, login_user)
                 return HttpResponse("OK")
@@ -35,10 +35,11 @@ def log_out(request):
 
 
 def new_user(request):
-    if request.method is "POST":
+    print(request)
+    if request.method == "POST":
         email = request.POST.get("email", "")
         passwd = request.POST.get("password", "")
-        new_created_user = User.objects.create_user()
+        new_created_user = User.objects.create_user(username=email, password=passwd)
         if new_created_user is not None:
             return HttpResponse("OK")
         else:
@@ -46,10 +47,10 @@ def new_user(request):
 
 
 def user_test(request):
-    if request.user.is_authenticated():
-        HttpResponse("OK")
+    if request.user.is_authenticated:
+        return HttpResponse("OK")
     else:
-        HttpResponse("FAIL")
+        return HttpResponse("FAIL")
 
 
 def get_company_list(request):

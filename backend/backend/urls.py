@@ -23,7 +23,7 @@ urlpatterns = [
     path('get_company_list/', company_show.views.get_company_list),
     path('', company_show.views.index_page, name='home'),
     path('user_test/', company_show.views.user_test),
-    path('login/', company_show.views.log_in),
+    path('log_in/', company_show.views.log_in),
     path('new_user/', company_show.views.new_user),
-    path("log_out", company_show.views.log_out),
+    path("log_out/", company_show.views.log_out),
 ]

@@ -43,7 +43,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -51,12 +51,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'backend.urls'
 
-LOGIN_REQUIRED_URLS = (
-    r'/index/',
-    r'/get_company_list/',
-)
-
-LOGIN_URL = r'/login/'
 
 TEMPLATES = [
     {
