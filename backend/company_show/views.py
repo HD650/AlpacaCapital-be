@@ -39,7 +39,10 @@ def new_user(request):
     if request.method == "POST":
         email = request.POST.get("email", "")
         passwd = request.POST.get("password", "")
+        if User.objects.filter(username=email).exists():
+            return HttpResponse("ALREADY EXISTS")
         new_created_user = User.objects.create_user(username=email, password=passwd)
+
         if new_created_user is not None:
             return HttpResponse("OK")
         else:
