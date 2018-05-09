@@ -21,4 +21,4 @@ mysql_secure_installation
 mysql -u xxx -p < backup.sql
 # setup django and run
 python3 ./manage.py migrate
-python3 ./manage.py runserver 0.0.0.0:8000
+nohup python3 ./manage.py runserver 0.0.0.0:8000 &
