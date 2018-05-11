@@ -17,6 +17,14 @@ def log_in(request):
     if request.method == "POST":
         email = request.POST.get("email", "")
         passwd = request.POST.get("password", "")
+        # no data in the form, try body
+        if email == "" or passwd == "":
+            body_unicode = request.body.decode('utf-8')
+            body = json.loads(body_unicode)
+            email = body['email']
+            passwd = body['password']
+        if email == "" or passwd == "":
+            return HttpResponse("FAIL")
         login_user = authenticate(username=email, password=passwd)
         if login_user is not None:
             if login_user.is_active:
@@ -35,10 +43,17 @@ def log_out(request):
 
 
 def new_user(request):
-    print(request)
     if request.method == "POST":
         email = request.POST.get("email", "")
         passwd = request.POST.get("password", "")
+        # no data in the form, try body
+        if email == "" or passwd == "":
+            body_unicode = request.body.decode('utf-8')
+            body = json.loads(body_unicode)
+            email = body['email']
+            passwd = body['password']
+        if email == "" or passwd == "":
+            return HttpResponse("FAIL")
         if User.objects.filter(username=email).exists():
             return HttpResponse("ALREADY EXISTS")
         new_created_user = User.objects.create_user(username=email, password=passwd)
