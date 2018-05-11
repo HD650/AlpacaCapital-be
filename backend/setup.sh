@@ -14,6 +14,7 @@ sudo yum install mariadb-devel
 # essential python packages
 pip3 install mysqlclient
 pip3 install django
+pip3 install django-cors-headers
 # setup mysql
 sudo service mysqld start
 mysql_secure_installation
