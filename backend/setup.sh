@@ -1,5 +1,9 @@
 # compiler
 sudo yum install gcc gcc-c++ automake autoconf
+# ssl
+sudo yum install openssl-devel
+# other dependencies
+yum install zlib-devel bzip2-devel sqlite sqlite-devel
 # install python 3.5
 wget https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz
 tar xvf Python-3.5.2.tgz
