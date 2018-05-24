@@ -3,7 +3,7 @@ from django.shortcuts import HttpResponse
 import json
 import pymysql
 from django.shortcuts import redirect
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.auth import authenticate, login, logout
 
 one_page = 50
@@ -62,6 +62,16 @@ def new_user(request):
             return HttpResponse("OK")
         else:
             return HttpResponse("FAIL")
+
+
+def user_group(request):
+    if request.method == "POST":
+        user = request.user
+        my_group = Group.objects.get(name='my_group_name')
+        my_group.user_set.add(user)
+        return HttpResponse("OK")
+    else:
+        return HttpResponse("FAIL")
 
 
 def user_test(request):

@@ -27,3 +27,38 @@ urlpatterns = [
     path('new_user/', company_show.views.new_user),
     path("log_out/", company_show.views.log_out),
 ]
+
+
+# code only run once to setup the user group, permission data
+from django.contrib.auth.models import User, Group, Permission, ContentType
+groups = ["test1", "test2"]
+permission = [["play", "save"], ["load"]]
+for i, name in enumerate(groups):
+    group_temp, test = Group.objects.get_or_create(name=name)
+    for permission_name in permission[i]:
+        ct, test = ContentType.objects.get_or_create(app_label="company_show", model="whatever")
+        if not Permission.objects.filter(codename=permission_name).exists():
+            permission_temp = Permission.objects.create(codename=permission_name,
+                                                        name=permission_name+" permission", content_type=ct)
+            group_temp.permissions.add(permission_temp)
+
+# user = User.objects.get(username="axios@test.com")
+# group_temp = Group.objects.get(name='test1')
+# group_temp.user_set.add(user)
+#
+# user = User.objects.get(username="test.ncsu.edu")
+# group_temp = Group.objects.get(name='test2')
+# group_temp.user_set.add(user)
+#
+# temp = User.objects.get(username="axios@test.com")
+#
+# if temp.has_perm('company_show.play'):
+#     print("pass")
+
+
+
+
+
+
+
+

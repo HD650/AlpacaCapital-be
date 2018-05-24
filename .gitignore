@@ -1,0 +1,9 @@
+*.map
+backend/.idea/workspace.xml
+backend/.idea/workspace.xml
+*.pyc
+*.pyc
+*.xml
+backend/.idea/workspace.xml
+*.xml
+backend/backend/__pycache__/settings.cpython-35.pyc
