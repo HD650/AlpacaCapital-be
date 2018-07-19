@@ -26,6 +26,8 @@ pip3 install django
 pip3 install django-cors-headers
 # setup mysql
 sudo service mysqld start
+# or
+sudo systemctl start mariadb
 mysql_secure_installation
 # insert data
 mysql -u xxx -p < backup.sql
