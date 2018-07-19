@@ -79,6 +79,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
            'read_default_file': os.path.join(BASE_DIR, 'database.conf'),
+           'charset': 'utf8',
+           'use_unicode': True,
          }
     }
 }
