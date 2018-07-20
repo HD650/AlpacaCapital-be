@@ -4,7 +4,6 @@
 from django.db import models
 
 
-
 class Category(models.Model):
     id = models.AutoField(primary_key=True)
     category = models.CharField(max_length=512)
@@ -52,6 +51,7 @@ class Founder(models.Model):
         managed = True
         db_table = 'founder'
 
+
 class CompanyDetail(models.Model):
     id = models.AutoField(primary_key=True)
     company_name = models.CharField(max_length=512)
@@ -59,7 +59,7 @@ class CompanyDetail(models.Model):
     hq_location = models.CharField(max_length=512, blank=True, null=True)
     logo = models.CharField(max_length=1024, blank=True, null=True)
     found_time = models.DateField(blank=True, null=True)
-    founder = models.ManyToManyField(Founder, through='Foundation')
+    founder = models.ManyToManyField(Founder)
     financing_stage = models.CharField(max_length=128, blank=True, null=True)
     investor = models.ManyToManyField(Investor)
     employee_count = models.IntegerField(blank=True, null=True)
@@ -96,13 +96,3 @@ class CompanyDetail(models.Model):
     class Meta:
         managed = True
         db_table = 'company_detail'
-
-class Foundation(models.Model):
-    id = models.AutoField(primary_key=True)
-    company = models.ForeignKey(CompanyDetail, on_delete=models.CASCADE)
-    founder = models.ForeignKey(Founder, on_delete=models.CASCADE)
-    role = models.CharField(max_length=512)
-
-    class Meta:
-        managed = True
-        db_table = 'foundation'
