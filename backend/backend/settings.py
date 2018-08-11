@@ -89,9 +89,17 @@ DATABASES = {
         'OPTIONS': {
            'read_default_file': os.path.join(BASE_DIR, 'database.conf'),
          }
+    },
+    'new_db': {
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+           'read_default_file': os.path.join(BASE_DIR, 'database_new.conf'),
+         }
     }
 }
 
+# router to control two databases in the same time
+DATABASE_ROUTERS = ['backend.router.AuthRouter', 'backend.router.TwoBaseRouter']
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
