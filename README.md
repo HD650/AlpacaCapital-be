@@ -1,4 +1,4 @@
-# AlpacaCapital-be   
+# backend   
 To deploy, install python3.5,mysql5.7,django.   
 Disable firewall on the linux server, setup an endpoint for azure load blance and fill the database.conf file.   
 ## get_company_list   
