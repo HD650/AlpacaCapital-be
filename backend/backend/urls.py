@@ -30,17 +30,17 @@ urlpatterns = [
 
 
 # code only run once to setup the user group, permission data
-from django.contrib.auth.models import User, Group, Permission, ContentType
-groups = ["test1", "test2"]
-permission = [["play", "save"], ["load"]]
-for i, name in enumerate(groups):
-    group_temp, test = Group.objects.get_or_create(name=name)
-    for permission_name in permission[i]:
-        ct, test = ContentType.objects.get_or_create(app_label="company_show", model="whatever")
-        if not Permission.objects.filter(codename=permission_name).exists():
-            permission_temp = Permission.objects.create(codename=permission_name,
-                                                        name=permission_name+" permission", content_type=ct)
-            group_temp.permissions.add(permission_temp)
+#from django.contrib.auth.models import User, Group, Permission, ContentType
+#groups = ["test1", "test2"]
+#permission = [["play", "save"], ["load"]]
+#for i, name in enumerate(groups):
+#    group_temp, test = Group.objects.get_or_create(name=name)
+#    for permission_name in permission[i]:
+#        ct, test = ContentType.objects.get_or_create(app_label="company_show", model="whatever")
+#        if not Permission.objects.filter(codename=permission_name).exists():
+#            permission_temp = Permission.objects.create(codename=permission_name,
+#                                                        name=permission_name+" permission", content_type=ct)
+#            group_temp.permissions.add(permission_temp)
 
 # user = User.objects.get(username="axios@test.com")
 # group_temp = Group.objects.get(name='test1')

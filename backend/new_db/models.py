@@ -150,7 +150,7 @@ class Company(models.Model):
     product_service_development_status = models.CharField(max_length=128, blank=True, null=True)
 
     # Contact information
-    contact_information = models.OneToOneField(Person, on_delete=models.CASCADE)
+    contact_information = models.OneToOneField(Person, on_delete=models.CASCADE, related_name='contact_person')
 
     # Team
     team = models.ManyToManyField(Person, through='TeamMember')
@@ -198,7 +198,7 @@ class TeamMember(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'industrial_sector'
+        db_table = 'team_member'
 
 
 class TargetMarket(models.Model):
