@@ -68,4 +68,6 @@ class TwoBaseRouter:
         """
         All non-auth models end up in this pool.
         """
-        return True
+        if app_label == 'new_db':
+            return db == 'new_db'
+        return False
