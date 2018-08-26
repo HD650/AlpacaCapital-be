@@ -209,7 +209,7 @@ class TargetMarket(models.Model):
     disadvantage = models.CharField(max_length=512, blank=True, null=True)
 
     def __str__(self):
-        return self.market_name
+        return self.market_name.market_name
 
     class Meta:
         managed = True
