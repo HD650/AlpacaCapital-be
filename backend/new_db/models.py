@@ -60,7 +60,7 @@ class CoreTechnology(models.Model):
     technology_description = models.TextField(blank=True, null=True)
     problems_the_technology_solves = models.TextField(blank=True, null=True)
     ip_protection = models.OneToOneField(IpProtection, on_delete=models.CASCADE)
-    fda_approval_status = models.OneToOneField(FdaApprovalStatus, on_delete=models.CASCADE)
+    fda_approval_status = models.OneToOneField(FDAApprovalStatus, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.technology_name
@@ -182,7 +182,7 @@ class Company(models.Model):
     strategy_for_setting_barriers = models.TextField(blank=True, null=True)
 
     # Financial
-    financial = models.ManyToManyField(Funding, blank=True, null=True)
+    financial = models.ManyToManyField(FundingStage, blank=True, null=True)
     current_round = models.OneToOneField(OpenFunding, on_delete=models.CASCADE, blank=True, null=True)
     # total_amount_raised (calculate in the runtime)
 

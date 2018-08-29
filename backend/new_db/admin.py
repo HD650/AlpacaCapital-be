@@ -1,5 +1,5 @@
 from django.contrib import admin
-from new_db.models import IndustrialSector, Person, IpProtection, FdaApprovalStatus, CoreTechnology, Product, Market, Funding, OpenFunding, Company, TeamMember, TargetMarket
+from new_db.models import IndustrialSector, Person, IpProtection, FDAApprovalStatus, CoreTechnology, Product, Market, FundingStage, OpenFunding, Company, TeamMember, TargetMarket
 
 
 class TargetMarketInline(admin.StackedInline):
@@ -42,11 +42,11 @@ class IpProtectionAdmin(admin.ModelAdmin):
 admin.site.register(IpProtection, IpProtectionAdmin)
 
 
-class FdaApprovalStatusAdmin(admin.ModelAdmin):
+class FDAApprovalStatusAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(FdaApprovalStatus, FdaApprovalStatusAdmin)
+admin.site.register(FDAApprovalStatus, FDAApprovalStatusAdmin)
 
 
 class CoreTechnologyAdmin(admin.ModelAdmin):
@@ -70,11 +70,11 @@ class MarketAdmin(admin.ModelAdmin):
 admin.site.register(Market, MarketAdmin)
 
 
-class FundingAdmin(admin.ModelAdmin):
+class FundingStageAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(Funding, FundingAdmin)
+admin.site.register(FundingStage, FundingStageAdmin)
 
 
 class OpenFundingAdmin(admin.ModelAdmin):
