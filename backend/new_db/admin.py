@@ -19,15 +19,15 @@ class CompanyAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Basic information', {
             'classes': ('collapse',),
-            'fields': ('company_name', 'company_logo', 'company_website', 'industrial_sector', 'two_lines_company_summary',),
+            'fields': ('company_name', 'company_logo', 'company_website', 'industrial_sector', 'two_lines_company_summary'),
         }),
         ('Contact information', {
             'classes': ('collapse',),
-            'fields': ('contact_information'),
+            'fields': ('contact_information',),
         }),
         ('TPM', {
             'classes': ('collapse',),
-            'fields': ('core_technology', 'product', 'market'),
+            'fields': ('core_technology', 'product'),
         }),
         ('Strategy', {
             'classes': ('collapse',),
