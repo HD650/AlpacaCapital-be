@@ -16,12 +16,38 @@ class CompanyAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
     filter_horizontal = ('core_technology', 'product', 'financial', 'offtake_agreements')
     inlines = (TargetMarketInline, TeamMemberInline)
+    fieldsets = (
+        ('Basic information', {
+            'classes': ('collapse',),
+            'fields': ('company_name', 'company_logo', 'company_website', 'industrial_sector', 'two_lines_company_summary',),
+        }),
+        ('Contact information', {
+            'classes': ('collapse',),
+            'fields': ('contact_information'),
+        }),
+        ('TPM', {
+            'classes': ('collapse',),
+            'fields': ('core_technology', 'product', 'market'),
+        }),
+        ('Strategy', {
+            'classes': ('collapse',),
+            'fields': ('value_proposition', 'business_model_description', 'entry_expansion_strategy', 'strategy_for_setting_barriers'),
+        }),
+        ('Financial', {
+            'classes': ('collapse',),
+            'fields': ('financial', 'current_round'),
+        }),
+        ('Related files', {
+            'classes': ('collapse',),
+            'fields': ('executive_summary', 'pitch_deck', 'financial_projections', 'business_plan', 'other'),
+        }),
+    )
 
 
 admin.site.register(Company, CompanyAdmin)
 
 
-class OfftakeAgreementsAdmin(admin.ModelAdmin)
+class OfftakeAgreementsAdmin(admin.ModelAdmin):
     pass
 
 admin.site.register(OfftakeAgreements, OfftakeAgreementsAdmin)

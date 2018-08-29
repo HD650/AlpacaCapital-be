@@ -5,6 +5,7 @@ import pymysql
 from django.shortcuts import redirect
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import authenticate, login, logout
+from new_db.models import *
 
 one_page = 50
 
@@ -85,7 +86,7 @@ def get_company_list(request):
     page_num = request.GET.get('page', 1)
     page_num = int(page_num)
     try:
-    
+        companies = Company.objects.all()
         json_raw["amount"] = company_num[0][0]
 
         json_res = json.dumps(company_raw)
