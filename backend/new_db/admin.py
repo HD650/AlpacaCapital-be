@@ -1,5 +1,5 @@
 from django.contrib import admin
-from new_db.models import IndustrialSector, Person, IpProtection, FDAApprovalStatus, CoreTechnology, Product, Market, FundingStage, OpenFunding, Company, TeamMember, TargetMarket
+from new_db.models import *
 
 
 class TargetMarketInline(admin.StackedInline):
@@ -14,11 +14,17 @@ class TeamMemberInline(admin.StackedInline):
 
 class CompanyAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
-    filter_horizontal = ('core_technology', 'product', 'financial')
+    filter_horizontal = ('core_technology', 'product', 'financial', 'offtake_agreements')
     inlines = (TargetMarketInline, TeamMemberInline)
 
 
 admin.site.register(Company, CompanyAdmin)
+
+
+class OfftakeAgreementsAdmin(admin.ModelAdmin)
+    pass
+
+admin.site.register(OfftakeAgreements, OfftakeAgreementsAdmin)
 
 
 class IndustrialSectorAdmin(admin.ModelAdmin):
