@@ -41,6 +41,9 @@ class CompanyAdmin(admin.ModelAdmin):
             'classes': ('collapse',),
             'fields': ('executive_summary', 'pitch_deck', 'financial_projections', 'business_plan', 'other'),
         }),
+        ('Misc', {
+            'fields': ('offtake_agreements',),
+        }),
     )
 
 

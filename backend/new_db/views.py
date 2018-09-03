@@ -95,8 +95,35 @@ def get_company_list(request):
     return HttpResponse(json_res)
 
 
+
+# 'visitor', 'see basic info'
+# 'membership', 'see most info'
+# 'admin', 'see all info'
+def permisson_process(user, data):
+    # remove fields that can not be seen except admin
+    if not user.has_perm('admin'):
+        for item in data:
+            #del item[]
+            pass
+    
+    # remove fields that can not be seen except membership
+    if not user.has_perm('membership'):
+        for item in data:
+            #del item[]
+            pass
+
+    # remove fields that can not be seen except visitor
+    if not user.has_perm('visitor'):
+        data = dict()
+
+    return data
+
+
 def get_company_detail(request):
     if request.user.is_authenticated:
-        pass
+        data = Company.objects.all()
+        permisson_process(data)
+        json_res = json.dumps(data)
+        return HttpResponse(json_res)
     else:
         return HttpResponse("USER NOT LOGIN")
