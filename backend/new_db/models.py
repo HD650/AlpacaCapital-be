@@ -142,7 +142,10 @@ class OfftakeAgreements(models.Model):
     delivery_date = models.DateField(blank=True, null=True)
 
     def __str__(self):
-        return "%s %s %s " % (str(self.buyer.company_name), str(self.amount), str(self.delivery_date))
+        tmp_name = "none_company"
+        if self.buyer is not None:
+            tmp_name = str(self.buyer.company_name)
+        return "%s %s %s " % (tmp_name, str(self.amount), str(self.delivery_date))
 
     class Meta:
         managed = True
@@ -214,7 +217,7 @@ class TeamMember(models.Model):
     title = models.CharField(max_length=512, blank=True, null=True)
 
     def __str__(self):
-        return '%s %s %s\%' % (str(self.person.name), str(self.title), str(self.share))
+        return '%s %s %s' % (str(self.person.name), str(self.title), str(self.share))
 
     class Meta:
         managed = True
