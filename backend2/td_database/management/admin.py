@@ -1,6 +1,5 @@
 from django.contrib import admin
-from management.models import Company, Comment, Category, \
-    ChineseCollaborator, Rank, TopBoard, Person, Investor, Investment
+from management.models import *
 
 
 # Register your models here.
@@ -14,12 +13,17 @@ class RankInline(admin.StackedInline):
     extra = 1
 
 
+class TeamMemberInline(admin.StackedInline):
+    model = TeamMember
+    extra = 1
+
+
 class CompanyAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
     search_fields = ('company_name', 'description', 'hq_location', 'founder')
     list_display = ('company_name', 'description', 'hq_location', 'found_time')
-    filter_horizontal = ('founder', 'category', 'chinese_collaborator', 'competitor')
-    inlines = (CommentInline, RankInline)
+    filter_horizontal = ('founder', 'category', 'chinese_collaborator', 'competitor', 'tag', 'investor')
+    inlines = (CommentInline, RankInline, TeamMemberInline)
 
 
 class TopBoardAdmin(admin.ModelAdmin):
