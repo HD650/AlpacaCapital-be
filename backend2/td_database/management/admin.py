@@ -22,7 +22,7 @@ class CompanyAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
     search_fields = ('company_name', 'description', 'hq_location', 'founder')
     list_display = ('company_name', 'description', 'hq_location', 'found_time')
-    filter_horizontal = ('founder', 'category', 'chinese_collaborator', 'competitor', 'tag', 'investor')
+    filter_horizontal = ('category', 'chinese_collaborator', 'competitor', 'tag', 'investor')
     inlines = (CommentInline, RankInline, TeamMemberInline)
 
 
