@@ -154,7 +154,7 @@ class Comment(models.Model):
     date = models.DateField(blank=True, null=True)
 
     def __str__(self):
-        return str(self.company.name) + str(self.user.name)
+        return str(self.company.company_name) + str(self.user.username)
 
     class Meta:
         managed = True
@@ -225,7 +225,7 @@ class Company(models.Model):
 
     #activity = models.ManyToManyField(Activity)
 
-    competitor = models.ManyToManyField('self')
+    competitor = models.ManyToManyField('self', blank=True, null=True);
     
     def __str__(self):
         return self.company_name

@@ -20,7 +20,7 @@ class TeamMemberInline(admin.StackedInline):
 
 class CompanyAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
-    search_fields = ('company_name', 'description', 'hq_location', 'founder')
+    search_fields = ('company_name', 'hq_location', 'tag__name', 'investor__name', 'team__name', 'category__category')
     list_display = ('company_name', 'description', 'hq_location', 'found_time')
     filter_horizontal = ('category', 'chinese_collaborator', 'competitor', 'tag', 'investor')
     inlines = (CommentInline, RankInline, TeamMemberInline)
